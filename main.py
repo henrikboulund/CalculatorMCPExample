@@ -21,3 +21,6 @@ def sub(a: int, b: int) -> int:
 @mcp.resource("greeting://{name}")
 def get_greeting(name: str) -> str:
     return f"Hello, {name}!"
+
+if __name__ == "__main__":
+    mcp.run()
