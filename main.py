@@ -1,5 +1,5 @@
-from fastmcp import FastMCP
-
+from mcp.server.fastmcp import FastMCP
+#from fastmcp import FastMCP
 mcp = FastMCP("DemoMCPServer")
 
 @mcp.tool()
@@ -17,6 +17,12 @@ def add(a: int, b: int) -> int:
 @mcp.tool()
 def sub(a: int, b: int) -> int:
     return a - b
+
+
+@mcp.resource("greeting://{name}")
+def get_greeting(name: str) -> str:
+    """Get a personalized greeting"""
+    return f"Hello, {name}!"
 
 
 if __name__ == "__main__":
