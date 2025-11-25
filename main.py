@@ -1,5 +1,4 @@
 from mcp.server.fastmcp import FastMCP
-import asyncio
 
 mcp = FastMCP("DemoMCPServer")
 
@@ -19,12 +18,5 @@ def add(a: int, b: int) -> int:
 def sub(a: int, b: int) -> int:
     return a - b
 
-@mcp.resource("greeting://{name}")
-def get_greeting(name: str) -> str:
-    return f"Hello, {name}!"
-
-async def main() -> None:
-    await mcp.run_async(transport="http", host="127.0.0.1", port=8000)
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    mcp.run(transport="http", host="127.0.0.1", port=8000)
